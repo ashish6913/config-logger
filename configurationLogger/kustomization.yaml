@@ -1,0 +1,33 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: gitops-kustomize
+#common labels to apply
+commonLabels:
+  app: configuration-logger
+  version: v1
+
+#List of resource files that Kustomize reads, modifies and emits as a YAML string
+resources:
+- deployment.yaml
+- route.yaml
+- service.yaml
+# Create artifactory pull secret
+secretGenerator:
+  - name: artifactory-secret
+    files:
+      - .dockerconfigjson
+    type: kubernetes.io/dockerconfigjson
+# Creates a config map
+configMapGenerator:
+- name: gitops-microservice-build
+  files:
+  - json-test
+  literals:
+  - poc.name=GitOps
+  - properties.build=true
+  - properties.deploy=false
+  - properties.expose=false
+  - properties.namespace=gitlab-kustomize
+  - properties.trust-certs=true
+  - json-test.properties.build=true
+  - json-test.properties.deploy=true

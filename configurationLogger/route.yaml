@@ -1,0 +1,12 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: configuration-logger
+  namespace: gitops-kustomize
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: configuration-logger
+    weight: 100
