@@ -26,7 +26,7 @@ spec:
       - name: artifactory-secret
       # - name: default-dockercfg-nm2xc
       containers:
-      - image: artifactory-artifactory.apps.xnkpeyx0.canadacentral.aroapp.io/gitops-local/gitops-micro:sprint-review
+      - image: artifactory-artifactory.apps.xnkpeyx0.canadacentral.aroapp.io/gitops-local/gitops-micro:latest
         name: configuration-logger
         env:
             - name: DATA
