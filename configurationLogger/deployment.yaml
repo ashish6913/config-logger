@@ -7,6 +7,8 @@ metadata:
     app: config-logger
     test: label
     test2: test2
+    test3: test3
+   
     
   # annotations:
   #   image.openshift.io/triggers: |-
@@ -27,7 +29,7 @@ spec:
       - name: artifactory-secret
       # - name: default-dockercfg-nm2xc
       containers:
-      - image: artifactory-artifactory.apps.xnkpeyx0.canadacentral.aroapp.io/gitops-local/gitops-micro:latest
+      - image: artifactory-artifactory.apps.xnkpeyx0.canadacentral.aroapp.io/gitops-local/gitops-micro:sprint-review
         name: configuration-logger
         env:
             - name: DATA
